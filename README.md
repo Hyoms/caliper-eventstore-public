@@ -1,8 +1,10 @@
 # Reference Caliper Event Store
 
-This is an implementation of a reference Caliper Event Store.
+This is an implementation of a reference Caliper Event Store.  It is used to collect Caliper Events and store them into a backing database (MongoDB).
 
-It is based on/forked from **Cube** - a system for collecting timestamped events and deriving metrics. By collecting events rather than metrics, Cube lets you compute aggregate statistics *post hoc*. It also enables richer analysis, such as quantiles and histograms of arbitrary event sets. Cube is built on [MongoDB](http://www.mongodb.org) and available under the [Apache License](/square/cube/blob/master/LICENSE).
+It is based on/forked from **Cube** - a system for collecting timestamped events and deriving metrics. 
+
+By collecting events rather than metrics, Cube lets you compute aggregate statistics *post hoc*. It also enables richer analysis, such as quantiles and histograms of arbitrary event sets. Cube is built on [MongoDB](http://www.mongodb.org) and available under the [Apache License](/square/cube/blob/master/LICENSE).
 
 Want to learn more about Cube? [See the wiki.](https://github.com/square/cube/wiki)
 
@@ -49,8 +51,6 @@ npm install
 
 If you're curious, the dependencies are defined in [package.json](https://github.com/square/cube/tree/master/package.json).
 
-[[Installation on Heroku]]
-
 ## Usage
 
 To start Cube:
@@ -62,6 +62,17 @@ node bin/evaluator.js 2>&1 >> /usr/local/var/log/cube/evaluator.log &
 ```
 
 You can now connect to localhost:1080 for the [collector](wiki/Collector), and localhost:1081 for the [evaluator](wiki/Evaluator). You can visit <http://localhost:1081/> in your browser to see the default dashboard.
+
+To send sample Caliper Events, you can
+- cd examples/caliper-events
+- curl -X POST -d @caliper-event.json http://localhost:1080/1.0/event/put
+
+This will add the event into a MongoDB collection (identified by the value of the "sensor" attribute in the event envelope).
+
+The default dashboard will show you a simple horizon chart so you can see metrics on the number of events going in.
+
+If you would like to work with the events, then you can go against the MongoDB collection and retrieve events.  There are plenty of MongoDB libraries available, include for e.g. Mongoose (http://mongoosejs.com/) if you like working with node.js.
+
 
 If you just want some data in order to play around with the dashboard, run the random data emitter:
 
