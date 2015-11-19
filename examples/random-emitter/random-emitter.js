@@ -15,8 +15,8 @@ var start = Date.now() + options["offset"],
 
 while (start < stop) {
   emitter.send({
-    type: "random",
-    time: new Date(start),
+    sensor: "random",
+    sendTime: new Date(start),
     data: {
       value: value += Math.random() - .5
     }
