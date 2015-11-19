@@ -17,7 +17,7 @@ You can install MongoDB, Node.js and NPM like so:
 
 ```bash
 brew update && brew upgrade # optional but recommended
-brew install node mongodb npm
+brew install node mongodb # node install includes npm
 ```
 
 #### Or via [Macports](http://macports.org) 
@@ -79,8 +79,8 @@ This will add the event into a MongoDB collection (identified by the value of th
 
 The default dashboard will show you a simple horizon chart so you can see metrics on the number of events going in.
 
-If you would like to introspect and/or work with the events, then you can go against the MongoDB collection and retrieve events.  There are plenty of MongoDB libraries available, include for e.g. [Mongoose](http://mongoosejs.com/) if you like working with node.js.
+If you would like to introspect and/or work with the events, then you can go against the MongoDB collection and retrieve events.  There are plenty of MongoDB libraries available, including for e.g. [Mongoose](http://mongoosejs.com/) if you like working with Node.js.
  
 Alternatively, you can use Cube's [evaluator](https://github.com/square/cube/wiki/Evaluator) with the appropriate (event or metric) query to get statistics on your event data.
 
-If your dashboard produces a 404 error, make sure you ran cube **precisely** as specified. You need to `cd` to the cube installation directory, otherwise the contents of the `static` directory are inaccessible.
+If your dashboard produces a 404 error, make sure you run Cube **precisely** as specified. You need to `cd` to the Cube installation directory, otherwise the contents of the `static` directory will be inaccessible.
