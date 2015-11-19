@@ -1,6 +1,6 @@
 # Reference Caliper Event Store
 
-This is an implementation of a reference Caliper Event Store.  It is used to collect Caliper Events and store them into a backing database (MongoDB).
+This is an implementation of a reference Caliper Event Store.  It is used to collect Caliper Events and store them into a backing database ([MongoDB](http://www.mongodb.org)).
 
 It is based on/forked from **Cube** - a system for collecting timestamped events and deriving metrics. 
 
@@ -71,7 +71,7 @@ This will add the event into a MongoDB collection (identified by the value of th
 
 The default dashboard will show you a simple horizon chart so you can see metrics on the number of events going in.
 
-If you would like to work with the events, then you can go against the MongoDB collection and retrieve events.  There are plenty of MongoDB libraries available, include for e.g. Mongoose (http://mongoosejs.com/) if you like working with node.js.
+If you would like to work with the events, then you can go against the MongoDB collection and retrieve events.  There are plenty of MongoDB libraries available, include for e.g. [Mongoose](http://mongoosejs.com/) if you like working with node.js.
 
 
 If you just want some data in order to play around with the dashboard, run the random data emitter:
