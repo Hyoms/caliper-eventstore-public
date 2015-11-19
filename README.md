@@ -64,22 +64,23 @@ node bin/evaluator.js 2>&1 >> /usr/local/var/log/cube/evaluator.log &
 You can now connect to localhost:1080 for the [collector](wiki/Collector), and localhost:1081 for the [evaluator](wiki/Evaluator). You can visit <http://localhost:1081/> in your browser to see the default dashboard.
 
 To send sample Caliper Events, you can
-- cd examples/caliper-events
-- curl -X POST -d @caliper-event.json http://localhost:1080/1.0/event/put
+
+```
+cd examples/caliper-events
+```
+
+then
+
+```
+curl -X POST -d @caliper-event.json http://localhost:1080/1.0/event/put
+```
 
 This will add the event into a MongoDB collection (identified by the value of the "sensor" attribute in the event envelope).
 
 The default dashboard will show you a simple horizon chart so you can see metrics on the number of events going in.
 
-If you would like to work with the events, then you can go against the MongoDB collection and retrieve events.  There are plenty of MongoDB libraries available, include for e.g. [Mongoose](http://mongoosejs.com/) if you like working with node.js.
-
-
-If you just want some data in order to play around with the dashboard, run the random data emitter:
-
-```bash
-node examples/random-emitter/random-emitter.js
-```
-
-You’ll want to ^C the random emitter after a few seconds. You can then reload your dashboard to see the new data.  
+If you would like to introspect and/or work with the events, then you can go against the MongoDB collection and retrieve events.  There are plenty of MongoDB libraries available, include for e.g. [Mongoose](http://mongoosejs.com/) if you like working with node.js.
+ 
+Alternatively, you can use Cube's [evaluator](https://github.com/square/cube/wiki/Evaluator) with the appropriate (event or metric) query to get statistics on your event data.
 
 If your dashboard produces a 404 error, make sure you ran cube **precisely** as specified. You need to `cd` to the cube installation directory, otherwise the contents of the `static` directory are inaccessible.
